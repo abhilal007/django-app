@@ -102,3 +102,13 @@ class User(AbstractBaseUser):
 
 DIFFICULTY = (('Easy', _('Easy')), ('Medium', _('Medium')), ('Advanced', _('Advanced')))
 LANGUAGE = (('English', _('English')), ('Malayalam', _('Malayalam')), ('Hindi', _('Hindi')))
+
+
+class Chocolate(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(_('Chocolate Name'), max_length=100, blank=False, unique=True)
+    details = models.CharField(_('Chocolate Description'), max_length=1000, blank=True, null=True)
+    price = models.IntegerField(_('Chocolate Price'),
+                                      validators=[MaxValueValidator(99999), MinValueValidator(0)],
+                                      help_text=_('5 digits maximum'), blank=True, null=True)
+    manufacture=models.CharField(_('Chocolate Manufacture'), max_length=100, blank=False, unique=True)
