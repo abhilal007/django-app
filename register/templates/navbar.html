@@ -1,0 +1,55 @@
+<nav class="nav navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">MY CHOCO STORE</a>
+        </div>
+
+
+        <ul class="nav navbar-nav pull-right">
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+
+                    {% if user.is_anonymous %}
+                        <li><a href="{%  url 'login' %}">SIGN IN</a></li>
+                        <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'register_user' %}" >SIGN UP</a></li>
+                    {% else %}
+                    <li>
+                        <div class="btn-group">
+                            <a class="btn-new btn-nav btn-white" data-toggle="dropdown">
+                            <li><a href="{%  url 'profile_view' %}">VIEW PROFILE</a></li>
+                            <li><a href="{%  url 'user_profile_update' %}">EDIT PROFILE</a></li>
+                            <li><a href="{%  url 'logout' %}">LOGOUT</a></li>
+
+                                {% if request.user.user_first_name %}
+                                    {{ request.user.user_first_name }}
+                                {% elif request.user.username %}
+                                    <i class="fa fa-user fa-fw"></i>{{ request.user.username }}
+                                {% else %}
+                                    {{ request.user.email }}
+                                {% endif %}
+                                {% endif %}
+                </ul>
+            </li>
+            <li class="active">
+
+                <a href="file:///home/icpc2015/Desktop/bootstrap/home.html"> <span style="color:white;" class="glyphicon glyphicon-user"></span> ABOUT</a>
+            </li>
+
+            <li class="active">
+
+                <a href="file:///home/icpc2015/Desktop/bootstrap/index.html"><span style="color:white;" class="glyphicon glyphicon-home"></span> HOME</a>
+            </li>
+            <li class="active">
+
+                <a href="file:///home/icpc2015/Desktop/form.html"><span style="color:white;" class="glyphicon glyphicon-home"></span> FORM</a>
+            </li>
+
+
+
+
+        </ul>
+</nav>
